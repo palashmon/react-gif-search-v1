@@ -1,18 +1,26 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import SearchBar from './components/SearchBar';
 import './App.css';
 
 class App extends Component {
+  handleTermChange(term) {
+    console.log(term);
+  }
+
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+      <div className="App container">
+        <div className="row">
+          <div className="col-md-12">
+            <div className="page-header">
+              <h1>React Gif Search</h1>
+            </div>
+            <SearchBar onTermChange={this.handleTermChange} />
+          </div>
+        </div>
+        <div className="row">
+          <div className="col-md-12">Gif List Here</div>
+        </div>
       </div>
     );
   }
