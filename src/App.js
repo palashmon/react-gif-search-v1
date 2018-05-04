@@ -1,29 +1,28 @@
+import createDOMPurify from 'dompurify';
 import React, { Component } from 'react';
+import request from 'superagent';
 import './App.css';
 import GifList from './components/GifList';
 import SearchBar from './components/SearchBar';
 
+const DOMPurify = createDOMPurify(window);
+
 class App extends Component {
   state = {
-    gifs: [
-      {
-        id: 1,
-        url: 'https://picsum.photos/300'
-      },
-      {
-        id: 2,
-        url: 'https://picsum.photos/300?image=1067'
-      },
-      {
-        id: 3,
-        url: 'https://picsum.photos/300?image?image=1051'
-      }
-    ]
+    gifs: []
   };
 
-  handleTermChange(term) {
-    console.log(term);
-  }
+  handleTermChange = term => {
+    term = term.replace(/\s/g, '+');
+    const cleanTerm = DOMPurify.sanitize(term);
+    // console.log(cleanTerm);
+
+    const url = `http://api.giphy.com/v1/gifs/search?q=${cleanTerm}&limit=15&api_key=dc6zaTOxFJmzC`;
+    request.get(url, (err, res) => {
+      // console.log(res.body.data[0]);
+      this.setState({ gifs: res.body.data });
+    });
+  };
 
   render() {
     return (
