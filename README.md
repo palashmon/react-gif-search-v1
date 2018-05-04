@@ -4,15 +4,17 @@
 
 ## Objective
 
-Create a web app which uses a search input and Giphy's API to display giphs on a page.
+Create a web app which uses a search input and Giphy's API to display gifs on a page.
 
-## Todo
+## Break The UI Into A Component Hierarchy
 
-More notes will be added soon.
+- `App`: Its the component is a bucket for the rest of our modules. It will manage our base state and coordinate between the child components underneath it.
+  - `SearchBar`: will watch for a change to the user input and pass the search term(s) back up to the App component when needed.
+  - `GifList`: will map the array of gifs returned from the Giphy API and handle rendering individual `GifItem`.
+    - `GifItem`: will display the gifs.
 
 ## Notes
 
-This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-Below you will find some information on how to perform common tasks.<br>
-You can find the most recent version of this guide [here](https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md).
+You can find the most recent version of this guide [here](https://github.com/facebook/create-react-app/blob/master/packages/react-scripts/template/README.md).
