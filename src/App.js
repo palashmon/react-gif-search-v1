@@ -20,8 +20,8 @@ class App extends Component {
 
     const url = `http://api.giphy.com/v1/gifs/search?q=${cleanTerm}&limit=15&api_key=dc6zaTOxFJmzC`;
     request.get(url, (err, res) => {
-      console.log(res.body.data);
-      //this.setState({ gifs: res.body.data, loading: false });
+      //console.log(res.body.data);
+      this.setState({ gifs: res.body.data, loading: false });
     });
   };
 
